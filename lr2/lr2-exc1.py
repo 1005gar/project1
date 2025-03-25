@@ -30,7 +30,7 @@ dots = [[221, 432], [262, 331], [133, 342], [141, 310],
 pygame.draw.lines(screen, 'green', True, dots, 2)
 
 # Домик с крышей по центру экрана
-center_x, center_y = 400, 300  # Центр экрана 800x600
+center_x, center_y = 400, 300
 house_width = 200
 house_height = 150
 roof_height = 100

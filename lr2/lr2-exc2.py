@@ -23,13 +23,12 @@ class Shape:
         self.height = height if height else width
         self.color = color if color else random.choice(COLORS)
         self.speed_x = random.randint(2, 5) * random.choice([-1, 1])
-        self.speed_y = 0  # Движение только по горизонтали
+        self.speed_y = 0
 
     def move(self):
         self.x += self.speed_x
         self.y += self.speed_y
 
-        # Отскок от границ
         if self.x <= 0 or self.x + self.width >= WIDTH:
             self.speed_x *= -1
             self.color = random.choice(COLORS)

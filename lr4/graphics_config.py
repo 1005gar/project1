@@ -24,6 +24,7 @@ graphic_filenames[gr_fire] = ['arrow.png', 16]
 graphic_filenames[gr_enemyfire] = ['stone1.png', 10]
 graphic_filenames[gr_enemy2] = ['varvar.png', 16]
 graphic_filenames[gr_goal] = ['door.png', 20]
+graphic_filenames[gr_enemy3] = ['enemy3.png', 16]
 
 def file_images():
     ''' возвращает список картинок, переведённых в нужный формат, масштабированных, с убранной прозрачной каймой.

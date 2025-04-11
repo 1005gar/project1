@@ -3,24 +3,25 @@ import pygame
 from constants import *
 from level import *
 from level_config import *
-
+from game_help import Help
 from game_sprites import *
 from gamesingle import game
 
 
 game.start()
 hero = game.start_level(0)
+game.help = Help()
 
 game.show_menu()
 
 # На UBUNTU сборка pygame содержит ошибку, из-за которой не распознаются нажатые буквы...
-# Это обходится проверкой поля unicode, но такого поля нет у события KEYUP. 
+# Это обходится проверкой поля unicode, но такого поля нет у события KEYUP.
 # Поэтому будем получать у системы коды нужных букв по их нажатию и сохранять.
 # Заводим нужные переменные (буквы, отжатие которых обязательно отслеживать):
 
 key_a = pygame.K_a
 key_d = pygame.K_d
-key_h = pygame.K_h # режим help включается по отжатию клавиши h 
+key_h = pygame.K_h 
 
 while game.run:
     # Ввод данных (обработка событий)
@@ -66,17 +67,15 @@ while game.run:
 
     if game.in_game():
         # Вычисления:
-        game.all_sprites.update()  # перемещение игровых объектов, 
+        game.all_sprites.update()  # перемещение игровых объектов,
 
-        # Если нужно, переместим камеру перед окончательной отрисовкой спрайтов: 
+        # Если нужно, переместим камеру перед окончательной отрисовкой спрайтов:
         if hero.rect.left < win_leftbound or hero.rect.right > win_rightbound:
             offset_x = game.hero_pos.x - hero.rect.x
             game.camera.move(offset_x, 0, game.all_sprites)
-        # запоминаем место героя, чтобы крутить камеру относительно него:
         game.hero_pos.x = hero.rect.x
         game.hero_pos.y = hero.rect.y
 
-        # Вывод данных (отрисовка)
         game.draw_back_with_shift()
         game.window.blit(game.help.line(points=game.points, lives=game.lives), (0, 10))
         game.all_sprites.draw(game.window)
@@ -95,4 +94,3 @@ while game.run:
 
     # Пауза
     game.timer.tick(FPS)
-

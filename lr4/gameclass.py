@@ -87,9 +87,7 @@ class Game():
         return self.start_level(self.current_level) # возвращает спрайт героя
 
     def next_level(self):
-        ''' переключает на следующий уровень, если он есть, а если нет - то вызывает метод "победа" '''
         if self.current_level + 1 >= len(self.levels): 
-            # следующего уровня нет
             self.win_game()
         else:
             self.current_level += 1
@@ -154,9 +152,8 @@ class Game():
         self.all_sprites.add(goal)
 
     def show_menu(self):
-        w = win_width / 8
-        h = win_height / 8
-        self.window.blit(self.help.img, (w, h))
+        """Показывает меню паузы"""
+        self.help.show(self.window)  # Используем метод show() вместо прямого доступа к img
         self.is_help = True
     
     def resume(self):

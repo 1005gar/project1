@@ -51,15 +51,19 @@ game.levels.append(level_1)
 
 
 level_2 = Level()
-
 level_2.set_back('jungle.png')
+level_2.set_hero(100, 500)
+level_2.min_x = 0
+level_2.max_x = win_width * 10
 
-level_2.set_hero(300, 350)
-level_2.min_x = 0 
-level_2.max_x = win_width * 15
+level_2.add_platform(0, 550, 300, 100, 20, 0, 0)  # Нижняя платформа
+level_2.add_platform(400, 400, 300, 100, 10, 2, 0)  # Движущаяся платформа
+level_2.add_platform(800, 300, 300, 100, 15, 0, 0)  # Верхняя платформа
 
-level_2.add_enemy(0, 650, 100, 30, 900, 4)
-level_2.add_platform(0, 550, 300, 100, 35, 0, 0)
-level_2.set_goal(1000, 380)
+level_2.add_enemy(0, 500, 400, 400, 600, 3)  # Простой враг на движущейся платформе
+level_2.add_enemy(1, 900, 250, 800, 1000, 4)  # Стреляющий враг на верхней платформе
+
+level_2.add_platform(1500, 200, 300, 100, 5, 0, 0)  # Платформа с целью
+level_2.set_goal(1550, 130)  # Цель выше платформы
 
 game.levels.append(level_2)

@@ -140,3 +140,22 @@ class Enemy2(Enemy):
     def die(self):
         game.change_points()
         super().die()
+
+class Enemy3(Enemy):
+    '''Враг, требующий двух попаданий'''
+    def __init__(self, image, x, y, area, x_speed=0, y_speed=0, die_x=False, die_y=True, heavy=GRAVITY):
+        super().__init__(image, x, y, area, x_speed, y_speed, die_x, die_y, heavy, graph_index=gr_enemy3)
+        self.health = 2  # Требуется два попадания
+        self.hit_image = game.costumes[gr_enemy3 + gr_total]  # Загружаем "раненый" спрайт
+
+    def update(self):
+        super().update()
+        # Дополнительная логика для этого врага
+        if self.health == 1:
+            self.image = self.hit_image  # Меняем спрайт при ранении
+
+    def die(self):
+        self.health -= 1
+        if self.health <= 0:
+            game.change_points(3)  # Даем больше очков за убийство
+            super().die()

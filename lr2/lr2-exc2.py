@@ -52,7 +52,7 @@ class Shape:
             ]
             pygame.draw.polygon(screen, self.color, points)
 
-    def is_clicked(self, pos):
+    def is_clicked(self, pos) -> bool:
         if self.shape_type == "circle":
             distance = ((pos[0] - (self.x + self.width / 2)) ** 2 + (pos[1] - (self.y + self.width / 2)) ** 2) ** 0.5
             return distance <= self.width / 2
@@ -93,3 +93,4 @@ while running:
 
 pygame.quit()
 sys.exit()
+

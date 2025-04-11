@@ -20,19 +20,16 @@ bg_speed = 0
 class Player(pygame.sprite.Sprite):
     def __init__(self, filename, hero_x=100, hero_y=250, x_speed=0, y_speed=0):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(filename)  # загрузка героя из файла
+        self.image = pygame.image.load(filename)
         self.rect = self.image.get_rect()
         self.hero_x = hero_x
         self.hero_y = hero_y
-        # стартовые позиции персонажа:
         self.rect.x = hero_x
         self.rect.y = hero_y
-        # скорость движения спрайта:
         self.x_speed = x_speed
         self.y_speed = y_speed
 
     def update(self):
-        """Перемещает персонажа, применяя текущую горизонтальную и вертикальную скорость"""
         global bg_speed
 
         self.rect.x += self.x_speed

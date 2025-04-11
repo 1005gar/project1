@@ -7,7 +7,7 @@ pygame.init()
 window_width = 800
 window_height = 600
 window = pygame.display.set_mode((window_width, window_height))
-pygame.display.set_caption("Аркада v1.0")
+pygame.display.set_caption("Битва")
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -49,7 +49,6 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_DOWN]:
             self.rect.y += self.speed
 
-        # Ограничение движения в пределах экрана
         self.rect.x = max(0, min(self.rect.x, window_width - self.rect.width))
         self.rect.y = max(0, min(self.rect.y, window_height - self.rect.height))
 
